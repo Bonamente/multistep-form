@@ -1,10 +1,16 @@
-import styles from './App.module.css';
+import { Routes, Route } from 'react-router-dom';
+
+import Home from './pages/home/home';
+import Create from './pages/create/create';
+import NotFound from './pages/not-found/not-found';
 
 const App = () => {
   return (
-    <div className={styles.app}>
-      <h1>Hello world!</h1>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="create" element={<Create />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 };
 
