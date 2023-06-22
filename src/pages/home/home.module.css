@@ -1,4 +1,3 @@
-
-title {
-  color: var(--input-placeholder-clr);
+.pageWrapper {
+  margin-top: 24px;
 }
