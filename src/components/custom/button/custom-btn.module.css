@@ -3,8 +3,8 @@
   align-items: center;
   justify-content: center;
 
-  text-align: center;
-  background-color: transparent;
+  text-align: center; 
+  border: none;
   
   cursor: pointer;
 }
