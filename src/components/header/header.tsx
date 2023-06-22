@@ -8,7 +8,7 @@ import { ReactComponent as Icon } from '../../icons/folder-icon.svg';
 
 const Header = () => {
   return (
-    <header className={cn(style.header, 'container')}>
+    <header className={cn(style.header)}>
       <UserIcon>
         <p className={style.userInitials}>JD</p>
       </UserIcon>
