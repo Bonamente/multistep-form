@@ -1,8 +1,5 @@
 .inputContainer {
-  display: flex;
-  align-items: center;
-  
-  width: 100%;
+  display: flex;  
 }
 
 .input {
@@ -14,7 +11,5 @@
   margin: 0;
 
   border: none;
-  background-color: transparent;
-
-  outline: none;
+  background-color: transparent; 
 }
