@@ -1,0 +1,119 @@
+.advantagesForm {
+  width: 100%;
+}
+
+.advantagesContainer,
+.checkboxContainer {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 24px;
+}
+
+.advantagesTitle,
+.checkboxTitle,
+.radioTitle {
+  margin-bottom: 8px;
+
+  font-size: var(--fs-3);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--clr-base);
+}
+
+.advantageOuterWrapper {  
+  width: 344px;
+  margin-bottom: 8px;
+}
+.advantageInnerWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.advantageInput {
+  display: flex;
+  flex-direction: column; 
+}
+
+.advantageInput input {
+  width: 300px;
+  height: 44px;
+  padding: 12px;
+ 
+  background-color: transparent;
+  border: 1px solid var(--input-border-clr);
+  border-radius: 4px;
+}
+
+.removeBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 44px;
+  height: 44px;
+
+  background-color: transparent;
+  border-color: transparent;
+
+  cursor: pointer;
+}
+
+.removeBtn img {
+  width: 20px;
+  height: 20px;
+
+  transition: var(--transition);
+}
+
+.removeBtn:hover img,
+.removeBtn:focus img {
+  transform: scale(1.1);
+}
+
+.appendBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+  padding: 12px;
+
+  color: var(--clr-primary);
+  font-size: 22px;
+  font-weight: 700;
+  background-color: transparent;
+  border: 1.5px solid var(--clr-primary);
+  border-radius: 4px;
+
+  transition: var(--transition);
+  outline: none;
+  cursor: pointer;
+}
+
+.appendBtn:hover,
+.appendBtn:focus {
+  color: var(--clr-white);
+  background-color: var(--clr-primary);
+}
+
+.errorMessage {
+  color: var(--clr-danger);
+  font-weight: 700;
+}
+
+.checkboxInput {
+  align-items: center;
+}
+
+.checkboxInput input,
+.radioInput input {
+  order: -1;
+
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+
+  border-color: red;
+}
