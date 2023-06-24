@@ -3,23 +3,21 @@ import cn from 'classnames';
 import style from './custom-input.module.css';
 
 interface CustomInputProps extends React.ComponentProps<'input'> {
+  id: string;
   name: string;
   label: string;
   classNames: string;
+  isLabelShown: boolean;
 }
 
 const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
-  ({ name, label, classNames = '', ...props }, ref) => {
+  ({ id, name, label, classNames, isLabelShown, ...props }, ref) => {
     return (
       <div className={cn(style.inputContainer, classNames)}>
-        <label htmlFor={name}>{label}</label>
-        <input
-          className={cn(style.input)}
-          id={name}
-          name={name}
-          ref={ref}
-          {...props}
-        />
+        <label className={!isLabelShown ? 'visually-hidden' : ''} htmlFor={id}>
+          {label}
+        </label>
+        <input id={id} name={name} ref={ref} {...props} />
       </div>
     );
   }
