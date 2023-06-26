@@ -1,0 +1,22 @@
+.langSwitchBtn {
+  position: relative;
+
+  width: 30px;
+  height: 30px;
+
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--clr-white);
+
+  border-radius: 50%;
+  background-color: var(--clr-primary); 
+  outline: none;
+
+  transition: var(--transition);
+}
+
+.langSwitchBtn:hover,
+.langSwitchBtn:focus {
+  background-color: var(--clr-primary-dk); 
+}
+
