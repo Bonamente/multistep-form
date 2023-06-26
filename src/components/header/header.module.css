@@ -38,3 +38,8 @@
 .linkList li:not(:first-child) {
   margin-left: 18px;
 }
+
+.langSwitcher {
+  margin-left: auto;
+  align-self: center;
+}

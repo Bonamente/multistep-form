@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import InputMask from 'react-input-mask';
@@ -14,6 +15,7 @@ import { Contacts } from '../../store/user/types';
 import styles from './contact-form.module.css';
 
 const ContactForm = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { phone, email } = useAppSelector((state) => state.user.contacts);
@@ -35,7 +37,7 @@ const ContactForm = () => {
   return (
     <form className={cn(styles.contactForm)} onSubmit={handleSubmit(onSubmit)}>
       <div className={cn(styles.phoneInputContainer)}>
-        <label htmlFor="phone">Phone</label>
+        <label htmlFor="phone">{t('contactForm.phone')}</label>
 
         <InputMask
           className={cn(styles.phoneInput, 'input-placeholder')}
@@ -55,7 +57,7 @@ const ContactForm = () => {
         <CustomInput
           classNames={cn(styles.emailInput)}
           id="email"
-          label="Email"
+          label={t('contactForm.email')}
           type="email"
           placeholder="tim.jennings@example.com"
           isLabelShown
@@ -69,7 +71,7 @@ const ContactForm = () => {
       </div>
 
       <CustomBtn type="submit" classNames={cn(styles.startBtn)}>
-        Start
+        {t('buttons.start')}
       </CustomBtn>
     </form>
   );

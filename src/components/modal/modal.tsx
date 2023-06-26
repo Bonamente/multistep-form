@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import useDisableBodyScroll from '../../hooks/use-disable-body-scroll';
 import { clearData } from '../../store/user/slice';
@@ -7,6 +8,7 @@ import CustomBtn from '../custom/button/custom-btn';
 import styles from './modal.module.css';
 
 const Modal = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { isOpen } = useAppSelector((state) => state.modal);
@@ -27,9 +29,7 @@ const Modal = () => {
     status === 'success' ? (
       <div className={styles.overlay}>
         <div className={styles.modal}>
-          <h2 className={styles.successTitle}>
-            The form has been successfully submitted
-          </h2>
+          <h2 className={styles.successTitle}>{t('modal.success_title')}</h2>
           <div className={styles.successIcon}>
             <img src="/icons/success-icon.svg" alt="" />
           </div>
@@ -39,14 +39,14 @@ const Modal = () => {
             onClick={handleClick}
             type="button"
           >
-            Home
+            {t('buttons.home')}
           </CustomBtn>
         </div>
       </div>
     ) : (
       <div className={styles.overlay}>
         <div className={styles.modal}>
-          <h2 className={styles.errorTitle}>Error</h2>
+          <h2 className={styles.errorTitle}>{t('modal.error_title')}</h2>
           <div className={styles.errorIcon}>
             <img src="/icons/error-icon.svg" alt="" />
           </div>
@@ -56,7 +56,7 @@ const Modal = () => {
             onClick={handleClick}
             type="button"
           >
-            Close
+            {t('buttons.close')}
           </CustomBtn>
         </div>
       </div>

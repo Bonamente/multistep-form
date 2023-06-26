@@ -1,31 +1,58 @@
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 
-import style from './header.module.css';
 import UserIcon from '../user-icon/user-icon';
 import InfoLink from '../info-link/info-link';
-
 import { ReactComponent as Icon } from '../../icons/folder-icon.svg';
+import LangSwitcher from '../lang-switcher/lang-swithcer';
+import styles from './header.module.css';
 
 const Header = () => {
+  const { t, i18n } = useTranslation();
+  const [currentLang, setCurrentLang] = useState(i18n.language);
+
+  const handleLangChange = (lng: string) => {
+    i18n.changeLanguage(lng);
+    setCurrentLang(lng);
+    localStorage.setItem('currentLang', lng);
+  };
+
   return (
-    <header className={cn(style.header)}>
+    <header className={cn(styles.header)}>
       <UserIcon>
-        <p className={style.userInitials}>JD</p>
+        <p className={styles.userInitials}>{t('homePage.user_initials')}</p>
       </UserIcon>
 
-      <div className={style.userInfo}>
-        <h1 className={style.userName}>John Doe</h1>
-        <ul className={style.linkList}>
+      <div className={styles.userInfo}>
+        <h1 className={styles.userName}>{t('homePage.user_name')}</h1>
+        <ul className={styles.linkList}>
           <li>
-            <InfoLink linkText="Telegram" linkUrl="#" Icon={Icon} />
+            <InfoLink
+              linkText={t('links.telegram') as string}
+              linkUrl="#"
+              Icon={Icon}
+            />
           </li>
           <li>
-            <InfoLink linkText="GitHub" linkUrl="#" Icon={Icon} />
+            <InfoLink
+              linkText={t('links.github') as string}
+              linkUrl="#"
+              Icon={Icon}
+            />
           </li>
           <li>
-            <InfoLink linkText="Resume" linkUrl="#" Icon={Icon} />
+            <InfoLink
+              linkText={t('links.resume') as string}
+              linkUrl="#"
+              Icon={Icon}
+            />
           </li>
         </ul>
+      </div>
+
+      <div className={styles.langSwitcher}>
+        <LangSwitcher currentLang={currentLang} changeLang={handleLangChange} />
       </div>
     </header>
   );

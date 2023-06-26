@@ -1,4 +1,5 @@
 import { useForm, useController, SubmitHandler } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Select from 'react-select';
@@ -12,17 +13,18 @@ import { profileFormSchema } from '../../lib/yup/schema';
 import { Profile } from '../../store/user/types';
 import styles from './profile-form.module.css';
 
-const sexList = [
-  { value: 'man', label: 'Man' },
-  { value: 'woman', label: 'Woman' },
-];
-
 const ProfileForm = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { nickname, name, surname, sex } = useAppSelector(
     (state) => state.user.profile
   );
+
+  const sexList = [
+    { value: 'man', label: t('profileForm.man') },
+    { value: 'woman', label: t('profileForm.woman') },
+  ];
 
   const { register, handleSubmit, formState, control } = useForm<Profile>({
     defaultValues: {
@@ -56,9 +58,9 @@ const ProfileForm = () => {
         <CustomInput
           classNames={cn(styles.profileInput)}
           id="nickname"
-          label="Nickname"
+          label={t('profileForm.nickname')}
           isLabelShown
-          placeholder="user123"
+          placeholder={t('profileForm.nickname_placeholder')}
           type="text"
           {...register('nickname')}
         />
@@ -73,9 +75,9 @@ const ProfileForm = () => {
         <CustomInput
           classNames={cn(styles.profileInput)}
           id="name"
-          label="Name"
+          label={t('profileForm.name')}
           isLabelShown
-          placeholder="John"
+          placeholder={t('profileForm.name_placeholder')}
           type="text"
           {...register('name')}
         />
@@ -88,9 +90,9 @@ const ProfileForm = () => {
         <CustomInput
           classNames={cn(styles.profileInput)}
           id="surname"
-          label="Surname"
+          label={t('profileForm.surname')}
           isLabelShown
-          placeholder="Doe"
+          placeholder={t('profileForm.surname_placeholder')}
           type="text"
           {...register('surname')}
         />
@@ -102,7 +104,7 @@ const ProfileForm = () => {
       </div>
 
       <div className={cn(styles.inputContainer)}>
-        <label>Sex</label>
+        <label>{t('profileForm.sex')}</label>
         <Select
           components={{
             IndicatorSeparator: () => null,
@@ -121,7 +123,7 @@ const ProfileForm = () => {
               marginTop: '8px',
             }),
           }}
-          placeholder="Not selected"
+          placeholder={t('profileForm.sex_placeholder')}
           isClearable
           options={sexList}
           value={value ? sexList.find((x) => x.value === value) : value}

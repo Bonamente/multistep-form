@@ -1,5 +1,6 @@
 /* eslint-disable no-useless-escape */
 import * as Yup from 'yup';
+import { i18nextInstance as i18n } from '../i18n/i18n';
 
 // contactFormSchema
 const phoneRegex = /^\+\d{1}\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}$/;
@@ -8,43 +9,53 @@ const emailRegex =
 
 export const contactFormSchema = Yup.object().shape({
   phone: Yup.string()
-    .required('Enter phone number')
-    .matches(phoneRegex, 'The phone number must contain only digits'),
+    .required(() => i18n.t('errors.phone'))
+    .matches(phoneRegex, () => i18n.t('errors.phone_invalid')),
   email: Yup.string()
     .trim()
-    .required('Enter email')
-    .email('Enter a valid email')
-    .matches(emailRegex, 'Enter a valid email'),
+    .required(() => i18n.t('errors.email'))
+    .email(() => i18n.t('errors.email_invalid'))
+    .matches(emailRegex, () => i18n.t('errors.email_invalid')),
 });
 
 // profileFormSchema
-const nicknameRegexp = /^[a-zA-Z0-9]+$/;
-const nameRegexp = /^[a-zA-Z]+$/;
+const nicknameRegexp = /^[a-zA-Z0-9а-яА-ЯёЁ]+$/;
+const nameRegexp = /^[a-zA-Zа-яА-ЯёЁ]+$/;
 
 export const profileFormSchema = Yup.object().shape({
   nickname: Yup.string()
     .trim()
-    .required('Enter your nickname')
-    .matches(nicknameRegexp, 'Only letters and numbers are allowed')
-    .max(30, 'The maximum length is 30 characters'),
+    .required(() => i18n.t('errors.nickname'))
+    .matches(nicknameRegexp, () => i18n.t('errors.nickname_invalid'))
+    .max(30, () => i18n.t('errors.max_length_30')),
   name: Yup.string()
     .trim()
-    .required('Enter your name')
-    .matches(nameRegexp, 'The name must contain only letters')
-    .max(50, 'The maximum length is 50 characters'),
+    .required(() => i18n.t('errors.name'))
+    .matches(nameRegexp, () => i18n.t('errors.name_invalid'))
+    .max(50, () => i18n.t('errors.max_length_50')),
   surname: Yup.string()
     .trim()
-    .required('Enter your surname')
-    .matches(nameRegexp, 'The surname must contain only letters')
-    .max(50, 'The maximum length is 50 characters'),
-  sex: Yup.string().required('Select sex'),
+    .required(() => i18n.t('errors.surname'))
+    .matches(nameRegexp, () => i18n.t('errors.surname_invalid'))
+    .max(50, () => i18n.t('errors.max_length_50')),
+  sex: Yup.string().required(() => i18n.t('errors.sex')),
 });
 
 // advantagesFormSchema
 export const advantagesFormSchema = Yup.object().shape({
   advantages: Yup.array().of(
     Yup.object().shape({
-      value: Yup.string().trim().required('The field must not be empty'),
+      value: Yup.string()
+        .trim()
+        .required(() => i18n.t('errors.not_empty')),
     })
   ),
+});
+
+// aboutFormSchema
+export const aboutFormSchema = Yup.object().shape({
+  about: Yup.string()
+    .trim()
+    .required(() => i18n.t('errors.not_empty'))
+    .max(200, () => i18n.t('errors.max_length_200')),
 });

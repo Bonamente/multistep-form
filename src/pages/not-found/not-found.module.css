@@ -14,13 +14,14 @@
 }
 
 .link {
-  font-size: 20px;
+  font-size: var(--fs-2);
   font-weight: 700;
-  color: var(--clr-action);
+
+  color: var(--clr-primary);  
 }
 
 .link:hover,
 .link:focus {
-  color: var(--clr-action-dk);
+  color: var(--clr-primary-dk);
   text-decoration: underline;
 } 

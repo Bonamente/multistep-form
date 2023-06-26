@@ -1,4 +1,5 @@
 import { useForm, useFieldArray, SubmitHandler } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import cn from 'classnames';
@@ -15,6 +16,7 @@ import styles from './advantages-form.module.css';
 const radios = [1, 2, 3];
 
 const AdvantagesForm = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { advantages, checkboxes, radio } = useAppSelector(
@@ -55,7 +57,9 @@ const AdvantagesForm = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className={cn(styles.advantagesContainer)}>
-        <h2 className={cn(styles.advantagesTitle)}>Advantages</h2>
+        <h2 className={cn(styles.advantagesTitle)}>
+          {t('advantagesForm.advantages')}
+        </h2>
         <div>
           {fields.map((field, index) => (
             <div className={cn(styles.advantageOuterWrapper)} key={field.id}>
@@ -74,6 +78,7 @@ const AdvantagesForm = () => {
                   onClick={() => remove(index)}
                   type="button"
                 >
+                  <p className="visually-hidden"> {t('buttons.remove')}</p>
                   <img src="/icons/trash-icon.png" alt="" />
                 </CustomBtn>
               </div>
@@ -91,13 +96,15 @@ const AdvantagesForm = () => {
             onClick={() => append({ value: '' })}
             type="button"
           >
-            +
+            <p className="visually-hidden"> {t('buttons.append')}</p>+
           </button>
         </div>
       </div>
 
       <div className={cn(styles.checkboxContainer)}>
-        <h2 className={cn(styles.checkboxTitle)}>Checkboxes</h2>
+        <h2 className={cn(styles.checkboxTitle)}>
+          {t('advantagesForm.checkboxes')}
+        </h2>
         <div>
           {checkboxFields.map((field, index) => (
             <div className={cn(styles.checkboxOuterWrapper)} key={field.id}>
@@ -117,7 +124,7 @@ const AdvantagesForm = () => {
       </div>
 
       <div className={cn(styles.radioContainer)}>
-        <h2 className={cn(styles.radioTitle)}>Radios</h2>
+        <h2 className={cn(styles.radioTitle)}> {t('advantagesForm.radios')}</h2>
         <div>
           {radios.map((item) => (
             <div className={cn(styles.radioOuterWrapper)} key={item}>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import cn from 'classnames';
@@ -13,6 +14,7 @@ import { About } from '../../store/user/types';
 import styles from './about-form.module.css';
 
 const AboutForm = () => {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const { contacts, profile, advantages, about } = useAppSelector(
     (state) => state.user
@@ -47,11 +49,11 @@ const AboutForm = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className={cn(styles.aboutContainer)}>
-        <label htmlFor="about">About</label>
+        <label htmlFor="about">{t('aboutForm.about')}</label>
         <textarea
           className={cn(styles.about)}
           id="about"
-          placeholder="Add information about yourself"
+          placeholder={t('aboutForm.about_placeholder')}
           {...register('about')}
         />
         {formState.errors.about && (
