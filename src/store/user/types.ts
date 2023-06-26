@@ -7,13 +7,13 @@ export interface Profile {
   nickname: string;
   name: string;
   surname: string;
-  sex: 'man' | 'woman' | null;
+  sex: 'man' | 'woman' | '';
 }
 
 export interface Advantages {
-  advantages: string[];
-  checkboxes: string[];
-  radio: string;
+  advantages: { value: string }[];
+  checkboxes: { value: number; isSelected: boolean }[];
+  radio: number;
 }
 
 export interface About {

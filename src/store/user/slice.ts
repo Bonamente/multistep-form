@@ -12,13 +12,17 @@ const initialState: UserData = {
     nickname: '',
     name: '',
     surname: '',
-    sex: null,
+    sex: '',
   },
 
   advantages: {
-    advantages: ['', '', ''],
-    checkboxes: [],
-    radio: '',
+    advantages: [{ value: '' }, { value: '' }, { value: '' }],
+    checkboxes: [
+      { value: 1, isSelected: false },
+      { value: 2, isSelected: false },
+      { value: 3, isSelected: false },
+    ],
+    radio: 0,
   },
 
   about: {
@@ -54,7 +58,7 @@ const userSlice = createSlice({
 
       state.advantages.advantages = advantages;
       state.advantages.checkboxes = checkboxes;
-      state.advantages.radio = radio;
+      state.advantages.radio = Number(radio);
     },
 
     addAbout(state, action: PayloadAction<About>) {
