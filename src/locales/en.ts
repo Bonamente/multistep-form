@@ -63,15 +63,15 @@ export default {
 
     errors: {
       phone: 'Enter phone number',
-      phone_invalid: 'The phone number must contain only digits',
+      phone_invalid: 'Only digits are allowed',
       email: 'Enter email',
       email_invalid: 'Enter a valid email',
       nickname: 'Enter your nickname',
       nickname_invalid: 'Only letters and numbers are allowed',
       name: 'Enter your name',
-      name_invalid: 'The name must contain only letters',
+      name_invalid: 'Only letters are allowed',
       surname: 'Enter your surname',
-      surname_invalid: 'The surname must contain only letters',
+      surname_invalid: 'Only letters are allowed',
       sex: 'Select sex',
       not_empty: 'The field must not be empty',
       max_length_30: 'The maximum length is 30 characters',
