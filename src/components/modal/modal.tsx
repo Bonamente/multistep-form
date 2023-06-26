@@ -25,8 +25,10 @@ const Modal = () => {
     }
   };
 
-  const modalContent =
-    status === 'success' ? (
+  let modalContent;
+
+  if (status === 'success') {
+    modalContent = (
       <div className={styles.overlay}>
         <div className={styles.modal}>
           <h2 className={styles.successTitle}>{t('modal.success_title')}</h2>
@@ -43,7 +45,9 @@ const Modal = () => {
           </CustomBtn>
         </div>
       </div>
-    ) : (
+    );
+  } else if (status === 'error') {
+    modalContent = (
       <div className={styles.overlay}>
         <div className={styles.modal}>
           <h2 className={styles.errorTitle}>{t('modal.error_title')}</h2>
@@ -61,6 +65,7 @@ const Modal = () => {
         </div>
       </div>
     );
+  }
 
   return isOpen ? modalContent : null;
 };
