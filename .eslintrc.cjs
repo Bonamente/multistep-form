@@ -39,5 +39,7 @@ module.exports = {
         ignorePropertyModificationsFor: ['state'],
       },
     ],
+    'import/no-extraneous-dependencies': 0,
+    'jsx-a11y/label-has-associated-control': 0,
   },
 };
