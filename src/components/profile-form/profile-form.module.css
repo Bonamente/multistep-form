@@ -13,6 +13,12 @@
   margin-bottom: 24px;
 }
 
+@media (max-width: 550px) {
+  .inputContainer {
+    width: 100%;
+  }
+}
+
 .profileInput {
   display: flex;
   flex-direction: column; 

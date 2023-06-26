@@ -1,5 +1,5 @@
 .pageWrapper {
-  margin-top: 62px;
+  margin-top: 72px;
 }
 
 .navigation {
@@ -10,10 +10,16 @@
   margin-top: 88px;
 }
 
+@media (max-width: 550px) {
+  .navigation {
+    margin-top: 44px;
+  }
+}
+
 .backBtn,
 .nextBtn {
   min-width: 73px;
-  height: 44;
+  height: 44px;
   padding: 12px 16px;
 
   color: var(--clr-white);

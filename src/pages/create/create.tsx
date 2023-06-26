@@ -2,12 +2,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 
+import { useAppSelector } from '../../hooks/redux-hooks';
 import ProfileForm from '../../components/profile-form/profile-form';
-import styles from './create.module.css';
 import AdvantagesForm from '../../components/advantages-form/advantages-form';
 import CustomBtn from '../../components/custom/button/custom-btn';
 import AboutForm from '../../components/about-form/about-form';
 import Stepper from '../../components/stepper/stepper';
+import styles from './create.module.css';
 
 const steps = [
   {
@@ -25,6 +26,7 @@ const steps = [
 ];
 
 const Create = () => {
+  const { status } = useAppSelector((state) => state.user);
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { step } = useParams();
@@ -46,7 +48,7 @@ const Create = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container create-container">
       <Stepper steps={steps} activeStep={Number(step.replace(/\D/g, ''))} />
 
       <main>
@@ -66,7 +68,12 @@ const Create = () => {
           {t('buttons.back')}
         </CustomBtn>
 
-        <CustomBtn form={formId} classNames={cn(styles.nextBtn)} type="submit">
+        <CustomBtn
+          form={formId}
+          classNames={cn(styles.nextBtn)}
+          type="submit"
+          disabled={status === 'loading'}
+        >
           {step === 'step3' ? `${t('buttons.submit')}` : `${t('buttons.next')}`}
         </CustomBtn>
       </div>

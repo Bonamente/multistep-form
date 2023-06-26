@@ -9,3 +9,10 @@
   border-radius: 50%;
   background-color: var(--clr-blue-lt);
 }
+
+@media (max-width: 550px) {
+  .userIcon {
+    width: 40px;
+    height: 40px;
+  }
+}

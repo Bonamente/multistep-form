@@ -1,17 +1,13 @@
 .mainContainer {
-  width: 100%;
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 0 16px;
+  width: 100%;  
+  margin: 0 auto; 
 }
 
 .stepContainer {
   position: relative;
 
   display: flex;
-  justify-content: space-between;
-
-  margin-top: 70px;
+  justify-content: space-between;  
 }
 
 .stepContainer::before {
@@ -69,7 +65,7 @@
 
 .stepsLabelContainer {
   position: absolute;
-  top: 66px;
+  top: 32px;
   left: 50%;
   
   transform: translate(-50%, -50%);

@@ -30,6 +30,20 @@
   background-color: var(--clr-white);
 }
 
+@media (max-width: 700px) {
+  .modal {
+    width: 360px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .modal {
+    width: 300px;
+    padding: 10px;
+  }
+}
+
 .errorTitle,
 .successTitle { 
   margin-bottom: 50px;

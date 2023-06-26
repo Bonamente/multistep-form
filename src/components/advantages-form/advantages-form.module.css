@@ -25,6 +25,7 @@
   width: 344px;
   margin-bottom: 8px;
 }
+
 .advantageInnerWrapper {
   display: flex;
   align-items: center;
@@ -43,6 +44,20 @@
   background-color: transparent;
   border: 1px solid var(--input-border-clr);
   border-radius: 4px;
+}
+
+@media (max-width: 550px) {
+  .advantageOuterWrapper {  
+    width: 100%;
+  }
+
+  .advantageInput {
+    width: 100%;
+  }
+
+  .advantageInput input {
+    width: 100%;
+  }
 }
 
 .removeBtn {
@@ -113,7 +128,5 @@
 
   width: 16px;
   height: 16px;
-  margin-right: 8px;
-
-  border-color: red;
+  margin-right: 8px; 
 }
