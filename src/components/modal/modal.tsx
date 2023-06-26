@@ -11,8 +11,8 @@ const Modal = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { isOpen } = useAppSelector((state) => state.modal);
   const { status } = useAppSelector((state) => state.user);
+  const { isOpen } = useAppSelector((state) => state.modal);
   useDisableBodyScroll(isOpen);
 
   const handleClick = () => {
@@ -25,7 +25,7 @@ const Modal = () => {
     }
   };
 
-  let modalContent;
+  let modalContent = null;
 
   if (status === 'success') {
     modalContent = (
